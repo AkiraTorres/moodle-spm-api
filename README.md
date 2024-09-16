@@ -14,8 +14,7 @@ This API implements a process mining algorithm designed to identify patterns in 
 
 ### Prerequisites
 
-- Python 3.8+
-- `pandas`, `pm4py`, and `matplotlib` libraries.
+- Python 3.12.4
 
 Install the dependencies with:
 
@@ -28,7 +27,7 @@ pip install pandas pm4py matplotlib
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/username/vle-process-mining-api.git
+git clone [https://github.com/username/vle-process-mining-api.git](https://github.com/AkiraTorres/moodle-spm-api.git)
 cd vle-process-mining-api
 ```
 
@@ -40,63 +39,19 @@ pip install -r requirements.txt
 
 ### Usage
 
-#### 1. Load Student Logs
-To begin analyzing logs, prepare your dataset in a CSV format with columns such as `student_id`, `action`, `timestamp`, and `course_id`.
 
-Example:
-
-```csv
-student_id, action, timestamp, course_id
-1, login, 2023-01-01 10:00:00, CS101
-1, view_content, 2023-01-01 10:05:00, CS101
-2, submit_assignment, 2023-01-01 11:00:00, CS101
-...
-```
 
 #### 2. Start the API
 
 Run the server to start the API:
 
 ```bash
-python app.py
+python manage.py runserver 0.0.0.0:8000
 ```
 
-The API will be available at `http://localhost:5000`.
+The API will be available at `[http://localhost:5000](http://localhost:8000)`.
 
 #### 3. API Endpoints
-
-- **Upload Logs**: Upload the activity logs in CSV format.
-
-  **POST** `/upload`
-  - Body: CSV file containing student logs.
-  
-  Example:
-  ```bash
-  curl -F "file=@student_logs.csv" http://localhost:5000/upload
-  ```
-
-- **Discover Patterns**: Run the process mining algorithm on the logs.
-
-  **GET** `/discover-patterns`
-  - Query Parameters:
-    - `course_id` (optional): Filter by specific course.
-    - `threshold` (optional): Minimum occurrence of a pattern to be identified.
-    
-  Example:
-  ```bash
-  curl "http://localhost:5000/discover-patterns?course_id=CS101&threshold=5"
-  ```
-
-- **Export Results**: Export the identified patterns.
-
-  **GET** `/export-results`
-  - Query Parameters:
-    - `format`: Output format (`json`, `csv`, or `diagram`).
-    
-  Example:
-  ```bash
-  curl "http://localhost:5000/export-results?format=json"
-  ```
 
 ### Example: Process Mining Analysis
 
@@ -104,8 +59,9 @@ Once logs are uploaded, you can use the `/discover-patterns` endpoint to extract
 
 ### Configuration
 
-- **Log Structure**: Ensure that your log files follow the structure `student_id, action, timestamp, course_id` to allow the algorithm to parse events properly.
+
 - **Algorithm Parameters**: You can adjust the thresholds and filtering parameters via the API endpoints to customize the pattern discovery process.
+- Preprocessing Strategies: You can select preprocessing strategies for the code that will be executed on the database, before the mining part of the process begins
 
 ### License
 
@@ -113,4 +69,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ### Contributions
 
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/username/vle-process-mining-api/issues).
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/AkiraTorres/moodle-spm-api/issues).
