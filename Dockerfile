@@ -17,8 +17,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the Django project code to the container
 COPY . /app/
 
-# Expose port 8000 to allow connections
-EXPOSE 8000
+# Expose port 80 to allow connections
+EXPOSE 80
 
 # Run Django server
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:80"]
