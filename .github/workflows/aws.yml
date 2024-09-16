@@ -38,6 +38,6 @@ jobs:
       run: |
         ssh -i ~/.ssh/id_rsa ${{ env.EC2_USER }}@${{ env.EC2_HOST }} << 'EOF'
         cd /home/${{ env.EC2_USER }}/app
-        docker-compose down  # Caso você esteja usando Docker
-        docker-compose up -d --build  # Builda e sobe os containers
+        docker compose down  # Caso você esteja usando Docker
+        docker compose up -d --build  # Builda e sobe os containers
         EOF
